@@ -66,3 +66,7 @@ java -jar target/resumebuilderapi-0.0.1-SNAPSHOT.jar
 ```
 
 Alternatively, you can run it directly from your IDE (e.g., IntelliJ IDEA, Eclipse) as a Spring Boot application.
+
+## API Endpoints
+
+(This section will be updated with details about the API endpoints as they are developed.)
