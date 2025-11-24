@@ -3,5 +3,24 @@ spring:
     name: resumebuilderapi
   data:
     mongodb:
-      uri: mongodb://localhost:27017/resumebuilder
+      uri: ${MONGODB_URI}
       database: resumebuilder
+# Mail Info
+  mail:
+    host: mail.smtp2go.com
+    port: 2525
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+            mail:
+                smtp:
+                    auth: true
+                from: huhugymi@fxzig.com
+    protocol: smtp
+
+# App base
+app:
+  base:
+    url: http://localhost:8080/
+  mail:
+    from: huhugymi@fxzig.com

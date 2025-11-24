@@ -31,7 +31,7 @@ This project provides a RESTful API for building and managing resumes. It allows
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/resumebuilderapi.git
+    git clone https://github.com/ankitv15/resumebuilderapi.git
     cd resume-builder-api
     ```
 
@@ -41,23 +41,52 @@ This project provides a RESTful API for building and managing resumes. It allows
     mvn clean install
     ```
 
-3. **Configure environment variables:**
+3. **Configuration**
 
-    Create an `application.properties` file (or `application.yml`) in `src/main/resources` and add the following:
+   This application is configured using environment variables. You must set these variables in your terminal session before launching the application.
 
-    ```bash
-    # MongoDB Configuration
-    spring.data.mongodb.uri=mongodb://localhost:27017/resumebuilder
+   #### Required Variables
 
-    # JWT Secret Key
-    jwt.secret=your_super_secret_key
+   *   `MONGODB_URI`: The full connection string for your MongoDB database.
+   *   `MAIL_USERNAME`: The username for the email (SMTP) server.
+   *   `MAIL_PASSWORD`: The password for the email (SMTP) server.
+   *   `JWT_SECRET`: A strong secret key for signing JWT tokens.
+   *   `RAZORPAY_KEY_ID`: Your Razorpay API Key ID.
+   *   `RAZORPAY_KEY_SECRET`: Your Razorpay API Key Secret.
 
-    # Razorpay Configuration
-    razorpay.key_id=your_razorpay_key_id
-    razorpay.key_secret=your_razorpay_key_secret
-    ```
+   #### How to Set Variables
 
-    Replace the placeholder values with your actual MongoDB connection string, a strong JWT secret key, and your Razorpay API credentials.
+   Below are examples of how to set the variables in different shells.
+
+   **PowerShell (Windows)**
+   ```powershell
+   $env:MONGODB_URI = "mongodb://localhost:27017/resumebuilder"
+   $env:MAIL_USERNAME = "your-mail-username"
+   $env:MAIL_PASSWORD = "your-mail-password"
+   $env:JWT_SECRET = "your-super-secret-key"
+   $env:RAZORPAY_KEY_ID = "your_razorpay_key_id"
+   $env:RAZORPAY_KEY_SECRET = "your_razorpay_key_secret"
+   ```
+
+   **Command Prompt (Windows)**
+   ```cmd
+   set MONGODB_URI="mongodb://localhost:27017/resumebuilder"
+   set MAIL_USERNAME="your-mail-username"
+   set MAIL_PASSWORD="your-mail-password"
+   set JWT_SECRET="your-super-secret-key"
+   set RAZORPAY_KEY_ID="your_razorpay_key_id"
+   set RAZORPAY_KEY_SECRET="your_razorpay_key_secret"
+   ```
+
+   **Bash (Linux/macOS)**
+   ```bash
+   export MONGODB_URI="mongodb://localhost:27017/resumebuilder"
+   export MAIL_USERNAME="your-mail-username"
+   export MAIL_PASSWORD="your-mail-password"
+   export JWT_SECRET="your-super-secret-key"
+   export RAZORPAY_KEY_ID="your_razorpay_key_id"
+   export RAZORPAY_KEY_SECRET="your_razorpay_key_secret"
+   ```
 
 ### Running the Application
 
