@@ -31,3 +31,54 @@ build/
 
 ### VS Code ###
 .vscode/
+### Spring Boot ###
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### Mac ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Linux ###
+.directory
+
+### Windows ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.log
+*.bak
+*.swp
+*~.nib
+*.iml
+.idea/
+.gradle/
+/build/
+/out/
+
+### Maven ###
+/target/
+
+### Gradle ###
+.gradle
+/build/
