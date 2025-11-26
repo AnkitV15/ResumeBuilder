@@ -31,7 +31,7 @@ This project provides a RESTful API for building and managing resumes. It allows
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/ankitv15/resumebuilderapi.git
+    git clone https://github.com/AnkitV15/resumebuilderapi.git
     cd resume-builder-api
     ```
 
