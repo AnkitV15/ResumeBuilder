@@ -1,21 +1,23 @@
 spring:
   application:
     name: resumebuilderapi
+  profiles:
+    active: dev
   data:
     mongodb:
       uri: ${MONGODB_URI}
       database: resumebuilder
-# Mail Info
+  # Mail Info
   mail:
-    host: mail.smtp2go.com
-    port: 2525
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
     properties:
-            mail:
-                smtp:
-                    auth: true
-                from: huhugymi@fxzig.com
+      mail:
+        smtp:
+          auth: true
+        from: ${MAIL_FROM}
     protocol: smtp
 
 # App base
@@ -23,4 +25,10 @@ app:
   base:
     url: http://localhost:8080/
   mail:
-    from: huhugymi@fxzig.com
+    from: ${MAIL_FROM}
+
+# Cloudinary Info
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME}
+  api-key: ${CLOUDINARY_API_KEY}
+  api-secret: ${CLOUDINARY_API_SECRET}

@@ -43,16 +43,22 @@ This project provides a RESTful API for building and managing resumes. It allows
 
 3. **Configuration**
 
-   This application is configured using environment variables. You must set these variables in your terminal session before launching the application.
+   This application is configured using environment variables, which are defined in `src/main/resources/application.yaml`. You must set these variables in your terminal session before launching the application.
 
    #### Required Variables
-
    *   `MONGODB_URI`: The full connection string for your MongoDB database.
-   *   `MAIL_USERNAME`: The username for the email (SMTP) server.
-   *   `MAIL_PASSWORD`: The password for the email (SMTP) server.
    *   `JWT_SECRET`: A strong secret key for signing JWT tokens.
    *   `RAZORPAY_KEY_ID`: Your Razorpay API Key ID.
    *   `RAZORPAY_KEY_SECRET`: Your Razorpay API Key Secret.
+   *   `MAIL_HOST`: The hostname of your SMTP mail server.
+   *   `MAIL_PORT`: The port of your SMTP mail server.
+   *   `MAIL_USERNAME`: The username for the email server.
+   *   `MAIL_PASSWORD`: The password for the email server.
+   *   `MAIL_FROM`: The email address that messages will be sent from.
+   *   `CLOUDINARY_CLOUD_NAME`: Your Cloudinary cloud name.
+   *   `CLOUDINARY_API_KEY`: Your Cloudinary API key.
+   *   `CLOUDINARY_API_SECRET`: Your Cloudinary API secret.
+
 
    #### How to Set Variables
 
@@ -61,31 +67,22 @@ This project provides a RESTful API for building and managing resumes. It allows
    **PowerShell (Windows)**
    ```powershell
    $env:MONGODB_URI = "mongodb://localhost:27017/resumebuilder"
-   $env:MAIL_USERNAME = "your-mail-username"
-   $env:MAIL_PASSWORD = "your-mail-password"
    $env:JWT_SECRET = "your-super-secret-key"
-   $env:RAZORPAY_KEY_ID = "your_razorpay_key_id"
-   $env:RAZORPAY_KEY_SECRET = "your_razorpay_key_secret"
+   # ... set other variables
    ```
 
    **Command Prompt (Windows)**
    ```cmd
    set MONGODB_URI="mongodb://localhost:27017/resumebuilder"
-   set MAIL_USERNAME="your-mail-username"
-   set MAIL_PASSWORD="your-mail-password"
    set JWT_SECRET="your-super-secret-key"
-   set RAZORPAY_KEY_ID="your_razorpay_key_id"
-   set RAZORPAY_KEY_SECRET="your_razorpay_key_secret"
+   # ... set other variables
    ```
 
    **Bash (Linux/macOS)**
    ```bash
    export MONGODB_URI="mongodb://localhost:27017/resumebuilder"
-   export MAIL_USERNAME="your-mail-username"
-   export MAIL_PASSWORD="your-mail-password"
    export JWT_SECRET="your-super-secret-key"
-   export RAZORPAY_KEY_ID="your_razorpay_key_id"
-   export RAZORPAY_KEY_SECRET="your_razorpay_key_secret"
+   # ... set other variables
    ```
 
 ### Running the Application

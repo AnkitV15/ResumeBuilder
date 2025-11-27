@@ -3,7 +3,9 @@ package in.ankit.resumebuilderapi.controller;
 import in.ankit.resumebuilderapi.dto.AuthResponse;
 import in.ankit.resumebuilderapi.dto.RegisterRequest;
 import in.ankit.resumebuilderapi.service.AuthService;
+import in.ankit.resumebuilderapi.service.FileUploadService;
 import in.ankit.resumebuilderapi.util.AppConstants;
+import org.springframework.web.multipart.MultipartFile;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,15 +19,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(AppConstants.AUTH_CONTROLLER )
+@RequestMapping(AppConstants.AUTH_CONTROLLER)
 @Slf4j
 public class AuthController {
 
     private final AuthService authService;
+    private final FileUploadService fileUploadService;
 
     @PostMapping(AppConstants.REGISTER)
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
@@ -33,12 +37,25 @@ public class AuthController {
         AuthResponse response = authService.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-    
+
     @GetMapping(AppConstants.VERIFY_EMAIL)
-    public ResponseEntity<?> verifyEmail(@RequestParam String token){
+    public ResponseEntity<?> verifyEmail(@RequestParam String token) {
         log.info("Inside AuthController - verifyEmail() : {}", token);
         authService.verifyEmail(token);
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("Message","Email Verified Successfully"));
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("Message", "Email Verified Successfully"));
+    }
+
+    @PostMapping(AppConstants.UPLOAD_PROFILE)
+    public ResponseEntity<?> uploadImage(@RequestPart("image") MultipartFile fMultipart) {
+        log.info("Inside AuthController - uploadImage()");
+        Map<String, String> response;
+        try {
+            response = fileUploadService.uploadSingleImage(fMultipart);
+        } catch (Exception e) {
+            throw new RuntimeException("File Upload failed!");
+            // return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        return ResponseEntity.ok(response);
     }
 
 }
