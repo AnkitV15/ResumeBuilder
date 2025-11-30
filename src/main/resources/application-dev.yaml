@@ -1,9 +1,0 @@
-# This file can be used to override properties from application.yaml for local development.
-# For example, to use a different local database:
-#
-# spring:
-#   data:
-#     mongodb:
-#       uri: mongodb://localhost:27018/local-resumedb
-#
-# This file is not required and should not be committed with sensitive data.

@@ -81,4 +81,4 @@ Desktop.ini
 
 ### Gradle ###
 .gradle
-/build/
+/build/"application-dev.yaml" 
