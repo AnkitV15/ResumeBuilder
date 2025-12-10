@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,6 +81,15 @@ public class AuthController {
         }
         authService.resendVerificationEmail(email);
         return ResponseEntity.ok(Map.of("Success", true, "Message", "Verification Email Sent Successfully"));
+    }
+
+    @GetMapping(AppConstants.PROFILE)
+    public ResponseEntity<?> getProfile(Authentication authentication) {
+        log.info("Inside AuthController - getProfile()");
+
+        AuthResponse authResponse = authService.getProfile(authentication);
+
+        return ResponseEntity.ok(authResponse);
     }
 
     // @PostMapping(AppConstants.LOGOUT)

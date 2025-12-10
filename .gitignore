@@ -82,3 +82,8 @@ Desktop.ini
 ### Gradle ###
 .gradle
 /build/"application-dev.yaml" 
+
+### Development ###
+src/main/resources/application-dev.yaml
+src/test/resources/application-dev.yaml
+
