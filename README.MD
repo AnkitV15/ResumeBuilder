@@ -134,5 +134,29 @@ Alternatively, you can run it directly from your IDE (e.g., IntelliJ IDEA, Eclip
 *   **Upload profile picture**
     *   `POST /api/auth/upload-profile`
     *   **Request Body:** `multipart/form-data` with key `image`.
+*   **Get user profile**
+    *   `GET /api/auth/profile`
+
+### Resumes
+
+*   **Create a new resume**
+    *   `POST /api/resumes`
+    *   **Request Body:**
+        ```json
+        {
+          "title": "My Resume"
+        }
+        ```
+*   **Get all resumes for the logged-in user**
+    *   `GET /api/resumes/get-user-resumes`
+*   **Get a specific resume by ID**
+    *   `GET /api/resumes/{id}`
+*   **Update a specific resume by ID**
+    *   `PUT /api/resumes/{id}`
+*   **Delete a specific resume by ID**
+    *   `DELETE /api/resumes/{id}`
+*   **Upload thumbnail and profile images for a resume**
+    *   `POST /api/resumes/{id}/upload-images`
+    *   **Request Body:** `multipart/form-data` with keys `thumbnail` and `profileImage`.
 
 (This section will be updated with details about other API endpoints as they are developed.)
