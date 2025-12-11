@@ -191,3 +191,13 @@ Alternatively, you can run it directly from your IDE (e.g., IntelliJ IDEA, Eclip
 *   **Get all templates**
     *   `GET /api/templates/all`
 
+### Email
+
+*   **Send resume by email**
+    *   `POST /api/email/send-resume`
+    *   **Request Body:** `multipart/form-data` with the following parts:
+        *   `recipientEmail` (String): The email address of the recipient.
+        *   `subject` (String, optional): The subject of the email.
+        *   `message` (String, optional): The body of the email.
+        *   `pdfFile` (File): The resume in PDF format.
+
