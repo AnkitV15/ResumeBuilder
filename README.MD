@@ -160,3 +160,34 @@ Alternatively, you can run it directly from your IDE (e.g., IntelliJ IDEA, Eclip
     *   **Request Body:** `multipart/form-data` with keys `thumbnail` and `profileImage`.
 
 (This section will be updated with details about other API endpoints as they are developed.)
+
+### Payments
+
+*   **Create a new payment order**
+    *   `POST /api/payment/create-order`
+    *   **Request Body:**
+        ```json
+        {
+          "planType": "PREMIUM"
+        }
+        ```
+*   **Verify payment**
+    *   `POST /api/payment/verify-payment`
+    *   **Request Body:**
+        ```json
+        {
+          "razorpayOrderId": "order_...",
+          "razorpayPaymentId": "pay_...",
+          "razorpaySignature": "..."
+        }
+        ```
+*   **Get payment history**
+    *   `GET /api/payment/history`
+*   **Get order details**
+    *   `GET /api/payment/get-order/{orderId}`
+
+### Templates
+
+*   **Get all templates**
+    *   `GET /api/templates/all`
+
