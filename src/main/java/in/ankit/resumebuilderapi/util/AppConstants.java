@@ -13,4 +13,9 @@ public class AppConstants {
     public static final String ID = "/{id}";
     public static final String UPLOAD_IMAGES = ID + "/upload-images";
     public static final String GET_USER_RESUMES = "/get-user-resumes";
+
+    public static final String TEMPLATES = "/api/templates";
+    public static final String ALL_TEMPLATES = "/all";
+    public static final String PREMIUM = "PREMIUM";
+    public static final String BASIC = "BASIC";
 }
