@@ -10,6 +10,8 @@ COPY pom.xml .
 # Copy the source code
 COPY src src
 
+RUN chmod +x mvnw
+
 # Build the application, skipping tests
 RUN ./mvnw package -DskipTests
 
