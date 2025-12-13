@@ -44,7 +44,7 @@ public class PaymentService {
         RazorpayClient razorpayClient = new RazorpayClient(razorpayKeyId, razorpayKeySecret);
 
         String currency = "INR";
-        Integer amount = 99900; // Amount in paise for ₹999.00
+        Integer amount = 49900; // Amount in paise for ₹499.00
         String receipt = "rcpt_" + System.currentTimeMillis() + UUID.randomUUID().toString().substring(0, 8);
 
         JSONObject options = new JSONObject();

@@ -32,7 +32,7 @@ public class PaymentController {
     public ResponseEntity<?> createOrder(@RequestBody Map<String, String> orderData, Authentication authentication)
             throws RazorpayException {
         log.info("Creating a new payment order");
-        String planType = (String) orderData.get("planType");
+        String planType = (String) orderData.get("subscriptionPlan");
 
         if (!AppConstants.PREMIUM.equalsIgnoreCase(planType)) {
             return ResponseEntity.badRequest().body(Map.of("Message", "Invalid plan type"));
@@ -52,6 +52,7 @@ public class PaymentController {
     @PostMapping("/verify-payment")
     public ResponseEntity<?> verifyPayment(@RequestBody Map<String, Object> orderData) throws RazorpayException {
         log.info("Verifying payment");
+        log.info("Order Data: {}", orderData);
         String razorpayOrderId = (String) orderData.get("razorpayOrderId");
         String razorpayPaymentId = (String) orderData.get("razorpayPaymentId");
         String razorpaySignature = (String) orderData.get("razorpaySignature");
@@ -63,8 +64,10 @@ public class PaymentController {
         boolean isValid = paymentService.verifyPayment(razorpayOrderId, razorpayPaymentId, razorpaySignature);
 
         if (isValid) {
+            log.info("Payment verified successfully");
             return ResponseEntity.ok(Map.of("Message", "Payment verified successfully"));
         } else {
+            log.info("Payment Failed");
             return ResponseEntity.badRequest().body(Map.of("Message", "Payment verification failed"));
         }
     }

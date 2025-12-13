@@ -4,6 +4,7 @@ import in.ankit.resumebuilderapi.document.User;
 import in.ankit.resumebuilderapi.dto.AuthResponse;
 import in.ankit.resumebuilderapi.dto.LoginRequest;
 import in.ankit.resumebuilderapi.dto.RegisterRequest;
+import in.ankit.resumebuilderapi.exception.EmailNotVerifiedException;
 import in.ankit.resumebuilderapi.exception.ResourceExistsException;
 import in.ankit.resumebuilderapi.repository.UserRepository;
 import in.ankit.resumebuilderapi.util.JwtUtil;
@@ -91,7 +92,7 @@ public class AuthService {
         }
 
         if (!existingUser.isEmailVerified()) {
-            throw new RuntimeException("Please verify your email");
+            throw new EmailNotVerifiedException("Please verify your email");    
         }
 
         String token = jwtUtil.generateToken(existingUser.getId());
@@ -146,24 +147,23 @@ public class AuthService {
         sendVerificationEmail(user);
     }
 
-public AuthResponse getProfile(Authentication authentication) {
-    Object principal = authentication.getPrincipal();
+    public AuthResponse getProfile(Authentication authentication) {
+        Object principal = authentication.getPrincipal();
 
-    if (principal instanceof User user) {
-        return toResponse(user);
-    } else if (principal instanceof org.springframework.security.core.userdetails.UserDetails userDetails) {
-        String email = userDetails.getUsername();
-        User existingUser = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
-        return toResponse(existingUser);
-    } else if (principal instanceof String str) {
-        User existingUser = userRepository.findByEmail(str)
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + str));
-        return toResponse(existingUser);
-    } else {
-        throw new RuntimeException("Unsupported principal type: " + principal.getClass());
+        if (principal instanceof User user) {
+            return toResponse(user);
+        } else if (principal instanceof org.springframework.security.core.userdetails.UserDetails userDetails) {
+            String email = userDetails.getUsername();
+            User existingUser = userRepository.findByEmail(email)
+                    .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+            return toResponse(existingUser);
+        } else if (principal instanceof String str) {
+            User existingUser = userRepository.findByEmail(str)
+                    .orElseThrow(() -> new RuntimeException("User not found with email: " + str));
+            return toResponse(existingUser);
+        } else {
+            throw new RuntimeException("Unsupported principal type: " + principal.getClass());
+        }
     }
-}
-
 
 }
