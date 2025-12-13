@@ -92,7 +92,7 @@ public class AuthService {
         }
 
         if (!existingUser.isEmailVerified()) {
-            throw new EmailNotVerifiedException("Please verify your email");    
+            throw new EmailNotVerifiedException("Please verify your email");
         }
 
         String token = jwtUtil.generateToken(existingUser.getId());
