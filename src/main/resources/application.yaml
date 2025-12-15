@@ -23,7 +23,9 @@ spring:
 # App base
 app:
   base:
-    url: http://localhost:8080/
+    url: ${APP_BASE_URL}
+
+  # Mail Info
   mail:
     from: ${MAIL_FROM}
 
