@@ -92,6 +92,7 @@ public class AuthService {
         }
 
         if (!existingUser.isEmailVerified()) {
+            sendVerificationEmail(existingUser);
             throw new EmailNotVerifiedException("Please verify your email");
         }
 
